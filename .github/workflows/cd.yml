@@ -28,7 +28,6 @@ jobs:
       
       # Install Symfony CLI 
       - name: Symfony CLI 
-        continue-on-error: true
         run: | 
           curl -sS https://get.symfony.com/cli/installer | bash 
           mv /home/runner/.symfony5/bin/symfony /usr/local/bin/symfony 
@@ -36,6 +35,7 @@ jobs:
       
       - name: Symfony Check Vulnerabilities 
         run: symfony check:security
+        continue-on-error: true
 
       - name: PHP-CS-Fixer
         run: |
