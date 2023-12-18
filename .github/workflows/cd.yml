@@ -54,6 +54,9 @@ jobs:
           ./vendor/bin/phpstan analyse src --memory-limit 1G
         continue-on-error: true
 
+      - name: Give permission on ./bin/console
+        run: chmod +x bin/console
+
       - name: Lint YAML files 
         run: ./bin/console lint:yaml config --parse-tags 
         
