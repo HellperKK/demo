@@ -6,7 +6,6 @@ on:
 jobs: 
   ci: 
     runs-on: ubuntu-latest 
-    continue-on-error: true
     steps: 
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it 
       - uses: actions/checkout@v2
@@ -29,6 +28,7 @@ jobs:
       
       # Install Symfony CLI 
       - name: Symfony CLI 
+        continue-on-error: true
         run: | 
           curl -sS https://get.symfony.com/cli/installer | bash 
           mv /home/runner/.symfony5/bin/symfony /usr/local/bin/symfony 
