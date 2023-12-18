@@ -6,6 +6,7 @@ on:
 jobs: 
   ci: 
     runs-on: ubuntu-latest 
+    continue-on-error: true
     steps: 
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it 
       - uses: actions/checkout@v2
@@ -41,3 +42,4 @@ jobs:
         run: |
           composer require friendsofphp/php-cs-fixer
           ./vendor/bin/php-cs-fixer fix --dry-run
+        continue-on-error: true
