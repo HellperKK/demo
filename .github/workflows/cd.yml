@@ -31,14 +31,15 @@ jobs:
         run: | 
           curl -sS https://get.symfony.com/cli/installer | bash 
           mv /home/runner/.symfony5/bin/symfony /usr/local/bin/symfony 
-      # Check vulnerabilities 
-      
-      - name: Symfony Check Vulnerabilities 
-        run: symfony check:security
-        continue-on-error: true
+      # Check vulnerabilities
 
       - name: PHP-CS-Fixer
         run: |
           composer require friendsofphp/php-cs-fixer
           ./vendor/bin/php-cs-fixer fix --dry-run
+        continue-on-error: true
+
+        
+      - name: Symfony Check Vulnerabilities 
+        run: symfony check:security
         continue-on-error: true
